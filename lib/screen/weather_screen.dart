@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:weatherapp/screen/additional_info_item.dart';
+import 'package:weatherapp/screen/weather_forecasting.dart';
 
 class WeatherScreen extends StatelessWidget {
   const WeatherScreen({super.key});
@@ -82,12 +84,31 @@ class WeatherScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
+                  HourlyForcastItem(
+                    time: '02:00',
+                    icon: Icons.sunny,
+                    tempereture: '83°',
+                  ),
+                  HourlyForcastItem(
+                    time: '03:00',
+                    icon: Icons.sunny,
+                    tempereture: '84°',
+                  ),
+                  HourlyForcastItem(
+                    time: '04:00',
+                    icon: Icons.cloud,
+                    tempereture: '89.4°',
+                  ),
+                  HourlyForcastItem(
+                    time: '05:00',
+                    icon: Icons.cloud,
+                    tempereture: '88.3°',
+                  ),
+                  HourlyForcastItem(
+                    time: '06:00',
+                    icon: Icons.sunny,
+                    tempereture: '84.2°',
+                  ),
                 ],
               ),
             ),
@@ -97,36 +118,28 @@ class WeatherScreen extends StatelessWidget {
               "Additional Information",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            //const Placeholder(fallbackHeight: 150),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class HourlyForcastItem extends StatelessWidget {
-  const HourlyForcastItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: const Color.fromARGB(255, 44, 44, 44),
-      child: Container(
-        width: 100,
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-        child: Column(
-          children: [
-            Text(
-              "03:00",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                AdditionalInfo(
+                  icon: Icons.water_drop,
+                  lable: "Humidity",
+                  value: '94',
+                ),
+                AdditionalInfo(
+                  icon: Icons.air,
+                  lable: "Wind Speed",
+                  value: "8.2",
+                ),
+                AdditionalInfo(
+                  icon: Icons.beach_access,
+                  lable: "Pressure",
+                  value: '1000',
+                ),
+              ],
             ),
-            const SizedBox(height: 8),
-            Icon(Icons.cloud, size: 32),
-            const SizedBox(height: 8),
-
-            Text("320"),
+            //const Placeholder(fallbackHeight: 150),
           ],
         ),
       ),
